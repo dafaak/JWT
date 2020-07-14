@@ -10,7 +10,7 @@ par de claves pública / privada usando RSA o ECDSA.
 
 En este tutorial aprenderemos a crear una API segura usando JWT.
 
-## Primero correremos el siguiente comando para crear el proyecto
+##### Primero correremos el siguiente comando para crear el proyecto
 
 ```
 npm init
@@ -21,7 +21,7 @@ npm init
  
 Le ponemos un nombre y después damos enter hasta terminar
 
-a continuación intallamos el paquete de JWT y nodemon para levantar el servidor
+### A continuación intallamos el paquete de JWT y nodemon para levantar el servidor
 
 ```
 npm i express jsonwebtoken
@@ -30,7 +30,7 @@ npm i express jsonwebtoken
 npm i nodemon
 ```
 
-despues de eso creamos un archivo index.js 
+### Creamos un archivo index.js 
 
 ![nombrenpm](/imagenes/indexcreado.png)
 
@@ -57,11 +57,11 @@ nodemon
 
 ![nombrenpm](/imagenes/serverup.png)
  
-y tambi'en lo comprobamos usando postman
+y también lo comprobamos usando postman
  
  ![nombrenpm](/imagenes/postget.png)
 
-Ahora añadimos un post, el cual más adelante protegeremos y comprobamos su funcionamiento
+### Ahora añadimos un post, el cual más adelante protegeremos y comprobamos su funcionamiento
 
 ``` typescript
 app.post('/api/post', (req, res) => {
@@ -72,10 +72,12 @@ app.post('/api/post', (req, res) => {
 ```
  ![nombrenpm](/imagenes/postpost.png)
 
-hasta ahora se puede realizar este post libremente por lo que no es seguro, ahora implmentaremos
+### Implementación de JWT
+Hasta ahora se puede realizar este post libremente por lo que no es seguro, ahora implementaremos
 seguridad utilizando JWT.
 
-Para esto crearemos la ruta /login para obtener el Token
+Para esto crearemos la ruta /login para obtener el Token, en este caso el usuario esta quemado, pero lo podemos obtener de otra manera que si sea segura, esto es solo un ejemplo. 
+La clave con la que generaremos el token es 'secreto'  
 
 ``` typescript
 const jwt = require('jsonwebtoken');
@@ -95,11 +97,12 @@ app.post('/api/login', (req, res) => {
 });
 ``` 
 
-Probamos que funcione el login, y se puede ver que hemos obtenido el token  
+Probamos que funcione el login  
 
  ![nombrenpm](/imagenes/postlogin.png)
- 
-Ahora añadimos una función para verificar el token
+ se puede ver que hemos obtenido el token
+
+## Añadimos una función para verificar el token
 
 ``` typescript
 function verificarToken(req, res, next) {
@@ -119,7 +122,7 @@ function verificarToken(req, res, next) {
     }
 }
 ```
-y modificamos el metodo post que hicimos anteriormente, para incluir la verificación del token para poder acceder a esta ruta
+### Modificamos el método post que hicimos anteriormente, para incluir la verificación del token para poder acceder a esta ruta
 
 ``` typescript
 app.post('/api/post', verificarToken, (req, res) => {
@@ -135,12 +138,12 @@ app.post('/api/post', verificarToken, (req, res) => {
     })
 });
 ```
-Ahora para utilizar el post necesitamos 
+### Finalmente para utilizar el post ahora necesitamos 
 
-1. Logearnos para obtener el token 
+**1.** Logearnos para obtener el token 
 
  ![nombrenpm](/imagenes/login1.png)
 
-2. Enviar el token en la cabecera "autorizacion"  despues de la palabra "Bearer" 
+**2.** Enviar el token en la cabecera "autorizacion"  despues de la palabra "Bearer" 
 
  ![nombrenpm](/imagenes/postconaut.png)
