@@ -19,29 +19,26 @@ app.post('/api/post', verificarToken, (req, res) => {
             });
         }
     })
-
 });
 
+
 app.post('/api/login', (req, res) => {
-    // user
     const user = {
         id: 1,
         username: 'Israel',
-        email: 'israel.mail.com'
+        email: 'israel@mail.com'
     }
 
-    jwt.sign({user: user}, 'secreto',{expiresIn: '30s'}, (err, token) => {
+    jwt.sign({user: user}, 'secreto', (err, token) => {
         res.json({
             token
         });
     });
 });
-// Formato del token
-// Autorización: Bearer <access_token>
 
 function verificarToken(req, res, next) {
     // obtener la cabecera del auth
-    const header = req.headers['authorization'];
+    const header = req.headers['autorizacion'];
     // Verificar si el header es indefinido
     if (typeof header !== 'undefined') {
         const bearer = header.split(' ');
