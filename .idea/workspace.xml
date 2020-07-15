@@ -59,7 +59,8 @@
       <workItem from="1594654177453" duration="2921000" />
       <workItem from="1594689718337" duration="553000" />
       <workItem from="1594701674893" duration="622000" />
-      <workItem from="1594763166860" duration="7645000" />
+      <workItem from="1594763166860" duration="9527000" />
+      <workItem from="1594837718681" duration="4861000" />
     </task>
     <servers />
   </component>
@@ -76,11 +77,16 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="739" y="274" key="FileChooserDialogImpl" timestamp="1594765793660">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="739" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1594765793660" />
+    <state x="613" y="168" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1594842607796">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="613" y="168" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1594842607796" />
   </component>
 </project>
